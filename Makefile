@@ -1,4 +1,4 @@
-PROTO_BASE_DIR=raw
+PROTO_BASE_DIR=protobufs
 OUT_BASE_DIR=compiled
 
 .PHONY: proto

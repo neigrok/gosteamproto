@@ -42,7 +42,8 @@ const (
 	EDemoCommands_DEM_SpawnGroups         EDemoCommands = 15
 	EDemoCommands_DEM_AnimationData       EDemoCommands = 16
 	EDemoCommands_DEM_AnimationHeader     EDemoCommands = 17
-	EDemoCommands_DEM_Max                 EDemoCommands = 18
+	EDemoCommands_DEM_Recovery            EDemoCommands = 18
+	EDemoCommands_DEM_Max                 EDemoCommands = 19
 	EDemoCommands_DEM_IsCompressed        EDemoCommands = 64
 )
 
@@ -68,7 +69,8 @@ var (
 		15: "DEM_SpawnGroups",
 		16: "DEM_AnimationData",
 		17: "DEM_AnimationHeader",
-		18: "DEM_Max",
+		18: "DEM_Recovery",
+		19: "DEM_Max",
 		64: "DEM_IsCompressed",
 	}
 	EDemoCommands_value = map[string]int32{
@@ -91,7 +93,8 @@ var (
 		"DEM_SpawnGroups":         15,
 		"DEM_AnimationData":       16,
 		"DEM_AnimationHeader":     17,
-		"DEM_Max":                 18,
+		"DEM_Recovery":            18,
+		"DEM_Max":                 19,
 		"DEM_IsCompressed":        64,
 	}
 )
@@ -1201,6 +1204,61 @@ func (x *CDemoSpawnGroups) GetMsgs() [][]byte {
 	return nil
 }
 
+type CDemoRecovery struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	InitialSpawnGroup *CDemoRecovery_DemoInitialSpawnGroupEntry `protobuf:"bytes,1,opt,name=initial_spawn_group,json=initialSpawnGroup" json:"initial_spawn_group,omitempty"`
+	SpawnGroupMessage []byte                                    `protobuf:"bytes,2,opt,name=spawn_group_message,json=spawnGroupMessage" json:"spawn_group_message,omitempty"`
+}
+
+func (x *CDemoRecovery) Reset() {
+	*x = CDemoRecovery{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_demo_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CDemoRecovery) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CDemoRecovery) ProtoMessage() {}
+
+func (x *CDemoRecovery) ProtoReflect() protoreflect.Message {
+	mi := &file_demo_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CDemoRecovery.ProtoReflect.Descriptor instead.
+func (*CDemoRecovery) Descriptor() ([]byte, []int) {
+	return file_demo_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CDemoRecovery) GetInitialSpawnGroup() *CDemoRecovery_DemoInitialSpawnGroupEntry {
+	if x != nil {
+		return x.InitialSpawnGroup
+	}
+	return nil
+}
+
+func (x *CDemoRecovery) GetSpawnGroupMessage() []byte {
+	if x != nil {
+		return x.SpawnGroupMessage
+	}
+	return nil
+}
+
 type CGameInfo_CDotaGameInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1222,7 +1280,7 @@ type CGameInfo_CDotaGameInfo struct {
 func (x *CGameInfo_CDotaGameInfo) Reset() {
 	*x = CGameInfo_CDotaGameInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_proto_msgTypes[18]
+		mi := &file_demo_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1235,7 +1293,7 @@ func (x *CGameInfo_CDotaGameInfo) String() string {
 func (*CGameInfo_CDotaGameInfo) ProtoMessage() {}
 
 func (x *CGameInfo_CDotaGameInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_proto_msgTypes[18]
+	mi := &file_demo_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1339,7 +1397,7 @@ type CGameInfo_CCSGameInfo struct {
 func (x *CGameInfo_CCSGameInfo) Reset() {
 	*x = CGameInfo_CCSGameInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_proto_msgTypes[19]
+		mi := &file_demo_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1352,7 +1410,7 @@ func (x *CGameInfo_CCSGameInfo) String() string {
 func (*CGameInfo_CCSGameInfo) ProtoMessage() {}
 
 func (x *CGameInfo_CCSGameInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_proto_msgTypes[19]
+	mi := &file_demo_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1390,7 +1448,7 @@ type CGameInfo_CDotaGameInfo_CPlayerInfo struct {
 func (x *CGameInfo_CDotaGameInfo_CPlayerInfo) Reset() {
 	*x = CGameInfo_CDotaGameInfo_CPlayerInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_proto_msgTypes[20]
+		mi := &file_demo_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1403,7 +1461,7 @@ func (x *CGameInfo_CDotaGameInfo_CPlayerInfo) String() string {
 func (*CGameInfo_CDotaGameInfo_CPlayerInfo) ProtoMessage() {}
 
 func (x *CGameInfo_CDotaGameInfo_CPlayerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_proto_msgTypes[20]
+	mi := &file_demo_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1467,7 +1525,7 @@ type CGameInfo_CDotaGameInfo_CHeroSelectEvent struct {
 func (x *CGameInfo_CDotaGameInfo_CHeroSelectEvent) Reset() {
 	*x = CGameInfo_CDotaGameInfo_CHeroSelectEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_proto_msgTypes[21]
+		mi := &file_demo_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1480,7 +1538,7 @@ func (x *CGameInfo_CDotaGameInfo_CHeroSelectEvent) String() string {
 func (*CGameInfo_CDotaGameInfo_CHeroSelectEvent) ProtoMessage() {}
 
 func (x *CGameInfo_CDotaGameInfo_CHeroSelectEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_proto_msgTypes[21]
+	mi := &file_demo_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1530,7 +1588,7 @@ type CDemoClassInfoClassT struct {
 func (x *CDemoClassInfoClassT) Reset() {
 	*x = CDemoClassInfoClassT{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_proto_msgTypes[22]
+		mi := &file_demo_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1543,7 +1601,7 @@ func (x *CDemoClassInfoClassT) String() string {
 func (*CDemoClassInfoClassT) ProtoMessage() {}
 
 func (x *CDemoClassInfoClassT) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_proto_msgTypes[22]
+	mi := &file_demo_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1592,7 +1650,7 @@ type CDemoStringTablesItemsT struct {
 func (x *CDemoStringTablesItemsT) Reset() {
 	*x = CDemoStringTablesItemsT{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_proto_msgTypes[23]
+		mi := &file_demo_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1605,7 +1663,7 @@ func (x *CDemoStringTablesItemsT) String() string {
 func (*CDemoStringTablesItemsT) ProtoMessage() {}
 
 func (x *CDemoStringTablesItemsT) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_proto_msgTypes[23]
+	mi := &file_demo_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1649,7 +1707,7 @@ type CDemoStringTablesTableT struct {
 func (x *CDemoStringTablesTableT) Reset() {
 	*x = CDemoStringTablesTableT{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_demo_proto_msgTypes[24]
+		mi := &file_demo_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1662,7 +1720,7 @@ func (x *CDemoStringTablesTableT) String() string {
 func (*CDemoStringTablesTableT) ProtoMessage() {}
 
 func (x *CDemoStringTablesTableT) ProtoReflect() protoreflect.Message {
-	mi := &file_demo_proto_msgTypes[24]
+	mi := &file_demo_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1704,6 +1762,61 @@ func (x *CDemoStringTablesTableT) GetTableFlags() int32 {
 		return *x.TableFlags
 	}
 	return 0
+}
+
+type CDemoRecovery_DemoInitialSpawnGroupEntry struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Spawngrouphandle *uint32 `protobuf:"varint,1,opt,name=spawngrouphandle" json:"spawngrouphandle,omitempty"`
+	WasCreated       *bool   `protobuf:"varint,2,opt,name=was_created,json=wasCreated" json:"was_created,omitempty"`
+}
+
+func (x *CDemoRecovery_DemoInitialSpawnGroupEntry) Reset() {
+	*x = CDemoRecovery_DemoInitialSpawnGroupEntry{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_demo_proto_msgTypes[26]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CDemoRecovery_DemoInitialSpawnGroupEntry) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CDemoRecovery_DemoInitialSpawnGroupEntry) ProtoMessage() {}
+
+func (x *CDemoRecovery_DemoInitialSpawnGroupEntry) ProtoReflect() protoreflect.Message {
+	mi := &file_demo_proto_msgTypes[26]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CDemoRecovery_DemoInitialSpawnGroupEntry.ProtoReflect.Descriptor instead.
+func (*CDemoRecovery_DemoInitialSpawnGroupEntry) Descriptor() ([]byte, []int) {
+	return file_demo_proto_rawDescGZIP(), []int{18, 0}
+}
+
+func (x *CDemoRecovery_DemoInitialSpawnGroupEntry) GetSpawngrouphandle() uint32 {
+	if x != nil && x.Spawngrouphandle != nil {
+		return *x.Spawngrouphandle
+	}
+	return 0
+}
+
+func (x *CDemoRecovery_DemoInitialSpawnGroupEntry) GetWasCreated() bool {
+	if x != nil && x.WasCreated != nil {
+		return *x.WasCreated
+	}
+	return false
 }
 
 var File_demo_proto protoreflect.FileDescriptor
@@ -1899,35 +2012,52 @@ var file_demo_proto_rawDesc = []byte{
 	0x62, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28,
 	0x0c, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x26, 0x0a, 0x10, 0x43, 0x44, 0x65, 0x6d, 0x6f,
 	0x53, 0x70, 0x61, 0x77, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x6d,
-	0x73, 0x67, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0c, 0x52, 0x04, 0x6d, 0x73, 0x67, 0x73, 0x2a,
-	0xb4, 0x03, 0x0a, 0x0d, 0x45, 0x44, 0x65, 0x6d, 0x6f, 0x43, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64,
-	0x73, 0x12, 0x16, 0x0a, 0x09, 0x44, 0x45, 0x4d, 0x5f, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x10, 0xff,
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x12, 0x0c, 0x0a, 0x08, 0x44, 0x45, 0x4d,
-	0x5f, 0x53, 0x74, 0x6f, 0x70, 0x10, 0x00, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x46,
-	0x69, 0x6c, 0x65, 0x48, 0x65, 0x61, 0x64, 0x65, 0x72, 0x10, 0x01, 0x12, 0x10, 0x0a, 0x0c, 0x44,
-	0x45, 0x4d, 0x5f, 0x46, 0x69, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x10, 0x02, 0x12, 0x10, 0x0a,
-	0x0c, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x79, 0x6e, 0x63, 0x54, 0x69, 0x63, 0x6b, 0x10, 0x03, 0x12,
-	0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x65, 0x6e, 0x64, 0x54, 0x61, 0x62, 0x6c, 0x65,
-	0x73, 0x10, 0x04, 0x12, 0x11, 0x0a, 0x0d, 0x44, 0x45, 0x4d, 0x5f, 0x43, 0x6c, 0x61, 0x73, 0x73,
-	0x49, 0x6e, 0x66, 0x6f, 0x10, 0x05, 0x12, 0x14, 0x0a, 0x10, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x74,
-	0x72, 0x69, 0x6e, 0x67, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x10, 0x06, 0x12, 0x0e, 0x0a, 0x0a,
-	0x44, 0x45, 0x4d, 0x5f, 0x50, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x10, 0x07, 0x12, 0x14, 0x0a, 0x10,
-	0x44, 0x45, 0x4d, 0x5f, 0x53, 0x69, 0x67, 0x6e, 0x6f, 0x6e, 0x50, 0x61, 0x63, 0x6b, 0x65, 0x74,
-	0x10, 0x08, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c,
-	0x65, 0x43, 0x6d, 0x64, 0x10, 0x09, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x43, 0x75,
-	0x73, 0x74, 0x6f, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x10, 0x0a, 0x12, 0x1b, 0x0a, 0x17, 0x44, 0x45,
-	0x4d, 0x5f, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x43, 0x61, 0x6c, 0x6c,
-	0x62, 0x61, 0x63, 0x6b, 0x73, 0x10, 0x0b, 0x12, 0x0f, 0x0a, 0x0b, 0x44, 0x45, 0x4d, 0x5f, 0x55,
-	0x73, 0x65, 0x72, 0x43, 0x6d, 0x64, 0x10, 0x0c, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f,
-	0x46, 0x75, 0x6c, 0x6c, 0x50, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x10, 0x0d, 0x12, 0x10, 0x0a, 0x0c,
-	0x44, 0x45, 0x4d, 0x5f, 0x53, 0x61, 0x76, 0x65, 0x47, 0x61, 0x6d, 0x65, 0x10, 0x0e, 0x12, 0x13,
-	0x0a, 0x0f, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x70, 0x61, 0x77, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70,
-	0x73, 0x10, 0x0f, 0x12, 0x15, 0x0a, 0x11, 0x44, 0x45, 0x4d, 0x5f, 0x41, 0x6e, 0x69, 0x6d, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x61, 0x10, 0x10, 0x12, 0x17, 0x0a, 0x13, 0x44, 0x45,
-	0x4d, 0x5f, 0x41, 0x6e, 0x69, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x48, 0x65, 0x61, 0x64, 0x65,
-	0x72, 0x10, 0x11, 0x12, 0x0b, 0x0a, 0x07, 0x44, 0x45, 0x4d, 0x5f, 0x4d, 0x61, 0x78, 0x10, 0x12,
-	0x12, 0x14, 0x0a, 0x10, 0x44, 0x45, 0x4d, 0x5f, 0x49, 0x73, 0x43, 0x6f, 0x6d, 0x70, 0x72, 0x65,
-	0x73, 0x73, 0x65, 0x64, 0x10, 0x40,
+	0x73, 0x67, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0c, 0x52, 0x04, 0x6d, 0x73, 0x67, 0x73, 0x22,
+	0x85, 0x02, 0x0a, 0x0d, 0x43, 0x44, 0x65, 0x6d, 0x6f, 0x52, 0x65, 0x63, 0x6f, 0x76, 0x65, 0x72,
+	0x79, 0x12, 0x59, 0x0a, 0x13, 0x69, 0x6e, 0x69, 0x74, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x70, 0x61,
+	0x77, 0x6e, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x29,
+	0x2e, 0x43, 0x44, 0x65, 0x6d, 0x6f, 0x52, 0x65, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x44,
+	0x65, 0x6d, 0x6f, 0x49, 0x6e, 0x69, 0x74, 0x69, 0x61, 0x6c, 0x53, 0x70, 0x61, 0x77, 0x6e, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x11, 0x69, 0x6e, 0x69, 0x74, 0x69,
+	0x61, 0x6c, 0x53, 0x70, 0x61, 0x77, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x2e, 0x0a, 0x13,
+	0x73, 0x70, 0x61, 0x77, 0x6e, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x11, 0x73, 0x70, 0x61, 0x77, 0x6e,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x1a, 0x69, 0x0a, 0x1a,
+	0x44, 0x65, 0x6d, 0x6f, 0x49, 0x6e, 0x69, 0x74, 0x69, 0x61, 0x6c, 0x53, 0x70, 0x61, 0x77, 0x6e,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x2a, 0x0a, 0x10, 0x73, 0x70,
+	0x61, 0x77, 0x6e, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x68, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0d, 0x52, 0x10, 0x73, 0x70, 0x61, 0x77, 0x6e, 0x67, 0x72, 0x6f, 0x75, 0x70,
+	0x68, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x77, 0x61, 0x73, 0x5f, 0x63, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x77, 0x61, 0x73,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x2a, 0xc6, 0x03, 0x0a, 0x0d, 0x45, 0x44, 0x65, 0x6d,
+	0x6f, 0x43, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64, 0x73, 0x12, 0x16, 0x0a, 0x09, 0x44, 0x45, 0x4d,
+	0x5f, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x10, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+	0x01, 0x12, 0x0c, 0x0a, 0x08, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x74, 0x6f, 0x70, 0x10, 0x00, 0x12,
+	0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x46, 0x69, 0x6c, 0x65, 0x48, 0x65, 0x61, 0x64, 0x65,
+	0x72, 0x10, 0x01, 0x12, 0x10, 0x0a, 0x0c, 0x44, 0x45, 0x4d, 0x5f, 0x46, 0x69, 0x6c, 0x65, 0x49,
+	0x6e, 0x66, 0x6f, 0x10, 0x02, 0x12, 0x10, 0x0a, 0x0c, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x79, 0x6e,
+	0x63, 0x54, 0x69, 0x63, 0x6b, 0x10, 0x03, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x53,
+	0x65, 0x6e, 0x64, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x10, 0x04, 0x12, 0x11, 0x0a, 0x0d, 0x44,
+	0x45, 0x4d, 0x5f, 0x43, 0x6c, 0x61, 0x73, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x10, 0x05, 0x12, 0x14,
+	0x0a, 0x10, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x54, 0x61, 0x62, 0x6c,
+	0x65, 0x73, 0x10, 0x06, 0x12, 0x0e, 0x0a, 0x0a, 0x44, 0x45, 0x4d, 0x5f, 0x50, 0x61, 0x63, 0x6b,
+	0x65, 0x74, 0x10, 0x07, 0x12, 0x14, 0x0a, 0x10, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x69, 0x67, 0x6e,
+	0x6f, 0x6e, 0x50, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x10, 0x08, 0x12, 0x12, 0x0a, 0x0e, 0x44, 0x45,
+	0x4d, 0x5f, 0x43, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x65, 0x43, 0x6d, 0x64, 0x10, 0x09, 0x12, 0x12,
+	0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x44, 0x61, 0x74, 0x61,
+	0x10, 0x0a, 0x12, 0x1b, 0x0a, 0x17, 0x44, 0x45, 0x4d, 0x5f, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d,
+	0x44, 0x61, 0x74, 0x61, 0x43, 0x61, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x73, 0x10, 0x0b, 0x12,
+	0x0f, 0x0a, 0x0b, 0x44, 0x45, 0x4d, 0x5f, 0x55, 0x73, 0x65, 0x72, 0x43, 0x6d, 0x64, 0x10, 0x0c,
+	0x12, 0x12, 0x0a, 0x0e, 0x44, 0x45, 0x4d, 0x5f, 0x46, 0x75, 0x6c, 0x6c, 0x50, 0x61, 0x63, 0x6b,
+	0x65, 0x74, 0x10, 0x0d, 0x12, 0x10, 0x0a, 0x0c, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x61, 0x76, 0x65,
+	0x47, 0x61, 0x6d, 0x65, 0x10, 0x0e, 0x12, 0x13, 0x0a, 0x0f, 0x44, 0x45, 0x4d, 0x5f, 0x53, 0x70,
+	0x61, 0x77, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x10, 0x0f, 0x12, 0x15, 0x0a, 0x11, 0x44,
+	0x45, 0x4d, 0x5f, 0x41, 0x6e, 0x69, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x61,
+	0x10, 0x10, 0x12, 0x17, 0x0a, 0x13, 0x44, 0x45, 0x4d, 0x5f, 0x41, 0x6e, 0x69, 0x6d, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x48, 0x65, 0x61, 0x64, 0x65, 0x72, 0x10, 0x11, 0x12, 0x10, 0x0a, 0x0c, 0x44,
+	0x45, 0x4d, 0x5f, 0x52, 0x65, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x79, 0x10, 0x12, 0x12, 0x0b, 0x0a,
+	0x07, 0x44, 0x45, 0x4d, 0x5f, 0x4d, 0x61, 0x78, 0x10, 0x13, 0x12, 0x14, 0x0a, 0x10, 0x44, 0x45,
+	0x4d, 0x5f, 0x49, 0x73, 0x43, 0x6f, 0x6d, 0x70, 0x72, 0x65, 0x73, 0x73, 0x65, 0x64, 0x10, 0x40,
 }
 
 var (
@@ -1943,7 +2073,7 @@ func file_demo_proto_rawDescGZIP() []byte {
 }
 
 var file_demo_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_demo_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_demo_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_demo_proto_goTypes = []any{
 	(EDemoCommands)(0),                               // 0: EDemoCommands
 	(*CDemoFileHeader)(nil),                          // 1: CDemoFileHeader
@@ -1964,31 +2094,34 @@ var file_demo_proto_goTypes = []any{
 	(*CDemoStop)(nil),                                // 16: CDemoStop
 	(*CDemoUserCmd)(nil),                             // 17: CDemoUserCmd
 	(*CDemoSpawnGroups)(nil),                         // 18: CDemoSpawnGroups
-	(*CGameInfo_CDotaGameInfo)(nil),                  // 19: CGameInfo.CDotaGameInfo
-	(*CGameInfo_CCSGameInfo)(nil),                    // 20: CGameInfo.CCSGameInfo
-	(*CGameInfo_CDotaGameInfo_CPlayerInfo)(nil),      // 21: CGameInfo.CDotaGameInfo.CPlayerInfo
-	(*CGameInfo_CDotaGameInfo_CHeroSelectEvent)(nil), // 22: CGameInfo.CDotaGameInfo.CHeroSelectEvent
-	(*CDemoClassInfoClassT)(nil),                     // 23: CDemoClassInfo.class_t
-	(*CDemoStringTablesItemsT)(nil),                  // 24: CDemoStringTables.items_t
-	(*CDemoStringTablesTableT)(nil),                  // 25: CDemoStringTables.table_t
+	(*CDemoRecovery)(nil),                            // 19: CDemoRecovery
+	(*CGameInfo_CDotaGameInfo)(nil),                  // 20: CGameInfo.CDotaGameInfo
+	(*CGameInfo_CCSGameInfo)(nil),                    // 21: CGameInfo.CCSGameInfo
+	(*CGameInfo_CDotaGameInfo_CPlayerInfo)(nil),      // 22: CGameInfo.CDotaGameInfo.CPlayerInfo
+	(*CGameInfo_CDotaGameInfo_CHeroSelectEvent)(nil), // 23: CGameInfo.CDotaGameInfo.CHeroSelectEvent
+	(*CDemoClassInfoClassT)(nil),                     // 24: CDemoClassInfo.class_t
+	(*CDemoStringTablesItemsT)(nil),                  // 25: CDemoStringTables.items_t
+	(*CDemoStringTablesTableT)(nil),                  // 26: CDemoStringTables.table_t
+	(*CDemoRecovery_DemoInitialSpawnGroupEntry)(nil), // 27: CDemoRecovery.DemoInitialSpawnGroupEntry
 }
 var file_demo_proto_depIdxs = []int32{
-	19, // 0: CGameInfo.dota:type_name -> CGameInfo.CDotaGameInfo
-	20, // 1: CGameInfo.cs:type_name -> CGameInfo.CCSGameInfo
+	20, // 0: CGameInfo.dota:type_name -> CGameInfo.CDotaGameInfo
+	21, // 1: CGameInfo.cs:type_name -> CGameInfo.CCSGameInfo
 	2,  // 2: CDemoFileInfo.game_info:type_name -> CGameInfo
 	15, // 3: CDemoFullPacket.string_table:type_name -> CDemoStringTables
 	4,  // 4: CDemoFullPacket.packet:type_name -> CDemoPacket
-	23, // 5: CDemoClassInfo.classes:type_name -> CDemoClassInfo.class_t
-	25, // 6: CDemoStringTables.tables:type_name -> CDemoStringTables.table_t
-	21, // 7: CGameInfo.CDotaGameInfo.player_info:type_name -> CGameInfo.CDotaGameInfo.CPlayerInfo
-	22, // 8: CGameInfo.CDotaGameInfo.picks_bans:type_name -> CGameInfo.CDotaGameInfo.CHeroSelectEvent
-	24, // 9: CDemoStringTables.table_t.items:type_name -> CDemoStringTables.items_t
-	24, // 10: CDemoStringTables.table_t.items_clientside:type_name -> CDemoStringTables.items_t
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	24, // 5: CDemoClassInfo.classes:type_name -> CDemoClassInfo.class_t
+	26, // 6: CDemoStringTables.tables:type_name -> CDemoStringTables.table_t
+	27, // 7: CDemoRecovery.initial_spawn_group:type_name -> CDemoRecovery.DemoInitialSpawnGroupEntry
+	22, // 8: CGameInfo.CDotaGameInfo.player_info:type_name -> CGameInfo.CDotaGameInfo.CPlayerInfo
+	23, // 9: CGameInfo.CDotaGameInfo.picks_bans:type_name -> CGameInfo.CDotaGameInfo.CHeroSelectEvent
+	25, // 10: CDemoStringTables.table_t.items:type_name -> CDemoStringTables.items_t
+	25, // 11: CDemoStringTables.table_t.items_clientside:type_name -> CDemoStringTables.items_t
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_demo_proto_init() }
@@ -2214,7 +2347,7 @@ func file_demo_proto_init() {
 			}
 		}
 		file_demo_proto_msgTypes[18].Exporter = func(v any, i int) any {
-			switch v := v.(*CGameInfo_CDotaGameInfo); i {
+			switch v := v.(*CDemoRecovery); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2226,7 +2359,7 @@ func file_demo_proto_init() {
 			}
 		}
 		file_demo_proto_msgTypes[19].Exporter = func(v any, i int) any {
-			switch v := v.(*CGameInfo_CCSGameInfo); i {
+			switch v := v.(*CGameInfo_CDotaGameInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2238,7 +2371,7 @@ func file_demo_proto_init() {
 			}
 		}
 		file_demo_proto_msgTypes[20].Exporter = func(v any, i int) any {
-			switch v := v.(*CGameInfo_CDotaGameInfo_CPlayerInfo); i {
+			switch v := v.(*CGameInfo_CCSGameInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2250,7 +2383,7 @@ func file_demo_proto_init() {
 			}
 		}
 		file_demo_proto_msgTypes[21].Exporter = func(v any, i int) any {
-			switch v := v.(*CGameInfo_CDotaGameInfo_CHeroSelectEvent); i {
+			switch v := v.(*CGameInfo_CDotaGameInfo_CPlayerInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2262,7 +2395,7 @@ func file_demo_proto_init() {
 			}
 		}
 		file_demo_proto_msgTypes[22].Exporter = func(v any, i int) any {
-			switch v := v.(*CDemoClassInfoClassT); i {
+			switch v := v.(*CGameInfo_CDotaGameInfo_CHeroSelectEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2274,7 +2407,7 @@ func file_demo_proto_init() {
 			}
 		}
 		file_demo_proto_msgTypes[23].Exporter = func(v any, i int) any {
-			switch v := v.(*CDemoStringTablesItemsT); i {
+			switch v := v.(*CDemoClassInfoClassT); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2286,7 +2419,31 @@ func file_demo_proto_init() {
 			}
 		}
 		file_demo_proto_msgTypes[24].Exporter = func(v any, i int) any {
+			switch v := v.(*CDemoStringTablesItemsT); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_demo_proto_msgTypes[25].Exporter = func(v any, i int) any {
 			switch v := v.(*CDemoStringTablesTableT); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_demo_proto_msgTypes[26].Exporter = func(v any, i int) any {
+			switch v := v.(*CDemoRecovery_DemoInitialSpawnGroupEntry); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2304,7 +2461,7 @@ func file_demo_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_demo_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   25,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
